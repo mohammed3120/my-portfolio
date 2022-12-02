@@ -474,7 +474,9 @@ header .navbar ul li a:hover{
     z-index:10;}
 
 
-
+#address{
+    text-transform: capitalize;
+}
 
 
 
