@@ -108,7 +108,7 @@ header .user .name{
 }
 
 header .user .post{
-    font-size: 2rem;
+    font-size: 1.8rem;
     color:#eee;
 }
 
@@ -226,7 +226,7 @@ header .navbar ul li a:hover{
     color:#fff;
 }
 
-.education .box-container{
+.experiance .box-container{
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -235,7 +235,7 @@ header .navbar ul li a:hover{
     padding-left: 3rem;
 }
 
-.education .box-container .box{
+.experiance .box-container .box{
     width:27rem;
     margin:4rem 1rem;
     padding-left: 4rem;
@@ -243,7 +243,7 @@ header .navbar ul li a:hover{
     position: relative;
 }
 
-.education .box-container .box span{
+.experiance .box-container .box span{
     font-size: 1.3rem;
     background:#222;
     color:#fff;
@@ -251,19 +251,19 @@ header .navbar ul li a:hover{
     padding:.5rem 2.5rem;
 }
 
-.education .box-container .box h3{
+.experiance .box-container .box h3{
     font-size: 2rem;
     color:#fff;
     padding-top: 1.5rem;
 }
 
-.education .box-container .box p{
+.experiance .box-container .box p{
     font-size: 1.4rem;
     color:#eee;
     padding: 1rem 0;
 }
 
-.education .box-container .box i{
+.experiance .box-container .box i{
     position: absolute;
     top:-1.5rem; left:-2.5rem;
     height:5rem;
@@ -276,33 +276,130 @@ header .navbar ul li a:hover{
     background:var(--yellow);
 }
 
-.portfolio .box-container{
+/*libraries*/
+.libraries .row{
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    padding:2rem 0;
 }
 
-.portfolio .box-container .box{
-    height: 20rem;
-    width:26rem;
-    border-radius: 1rem;
+.libraries .row .content{
+    flex:1 1 30rem;
+    padding:4rem;
+    padding-bottom: 0;
+}
+
+.libraries .row form{
+    flex:1 1 45rem;
+    padding:2rem;
     margin:2rem;
-    overflow: hidden;
-    cursor: pointer;
+    margin-bottom: 4rem;
 }
 
-.portfolio .box-container .box img{
-    height:100%;
+.libraries .row form .box{
+    padding:1.5rem;
+    margin:1rem 0;
+    background:#3333;
+    color:#fff;
+    text-transform: none;
+    font-size: 1.7rem;
     width:100%;
-    object-fit: cover;
 }
 
-.portfolio .box-container .box:hover img{
-    transform: scale(1.2);
+.libraries .row form .box::placeholder{
+    text-transform: capitalize;
 }
 
+.libraries .row form .message{
+    height: 15rem;
+    resize: none;
+}
+
+.libraries .row .content .title{
+    text-transform: uppercase;
+    color:#fff;
+    font-size: 3rem;
+    padding-bottom: 2rem;
+}
+
+.libraries .row .content .info h3{
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+    color:#eee;
+    padding:1rem 0;
+    font-weight: normal;
+}
+
+.libraries .row .content .info h3 i{
+    padding-right: 1rem;
+    color:var(--yellow);
+}
+
+
+/*skills*/
+.skills .row{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.skills .row .content{
+    flex:1 1 30rem;
+    padding:4rem;
+    padding-bottom: 0;
+}
+
+.skills .row form{
+    flex:1 1 45rem;
+    padding:2rem;
+    margin:2rem;
+    margin-bottom: 4rem;
+}
+
+.skills .row form .box{
+    padding:1.5rem;
+    margin:1rem 0;
+    background:#3333;
+    color:#fff;
+    text-transform: none;
+    font-size: 1.7rem;
+    width:100%;
+}
+
+.skills .row form .box::placeholder{
+    text-transform: capitalize;
+}
+
+.skills .row form .message{
+    height: 15rem;
+    resize: none;
+}
+
+.skills .row .content .title{
+    text-transform: uppercase;
+    color:#fff;
+    font-size: 3rem;
+    padding-bottom: 2rem;
+}
+
+.skills .row .content .info h3{
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+    color:#eee;
+    padding:1rem 0;
+    font-weight: normal;
+}
+
+.skills .row .content .info h3 i{
+    padding-right: 1rem;
+    color:var(--yellow);
+}
+
+/*contact*/
 .contact .row{
     display: flex;
     align-items: center;
@@ -333,8 +430,8 @@ header .navbar ul li a:hover{
     width:100%;
 }
 
-.contact .row form .box::placeholder{
-    text-transform: capitalize;
+.contact .row .info  h3{
+    text-transform: lowercase;
 }
 
 .contact .row form .message{
@@ -342,12 +439,7 @@ header .navbar ul li a:hover{
     resize: none;
 }
 
-.contact .row .content .title{
-    text-transform: uppercase;
-    color:#fff;
-    font-size: 3rem;
-    padding-bottom: 2rem;
-}
+
 
 .contact .row .content .info h3{
     display: flex;
@@ -375,6 +467,11 @@ header .navbar ul li a:hover{
     margin-left: 5rem;
 }
 
+
+
+.fa:hover{
+    display:block !important;
+    z-index:10;}
 
 
 
@@ -450,7 +547,7 @@ header .navbar ul li a:hover{
         width:100%;
     }
 
-    .portfolio .box-container .box{
+    .skills .box-container .box{
         width:100%;
     }
 
