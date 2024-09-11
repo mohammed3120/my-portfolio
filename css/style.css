@@ -227,16 +227,13 @@ header .navbar ul li a:hover{
 }
 
 .experiance .box-container{
-    display: flex;
     align-items: center;
-    justify-content: space-between;
     flex-wrap: wrap;
     padding:1rem 0;
     padding-left: 3rem;
 }
 
 .experiance .box-container .box{
-    width:27rem;
     margin:4rem 1rem;
     padding-left: 4rem;
     border-left: .2rem solid #fff;
@@ -244,7 +241,7 @@ header .navbar ul li a:hover{
 }
 
 .experiance .box-container .box span{
-    font-size: 1.3rem;
+    font-size: 1.8rem;
     background:#222;
     color:#fff;
     border-radius: 5rem;
@@ -252,17 +249,73 @@ header .navbar ul li a:hover{
 }
 
 .experiance .box-container .box h3{
-    font-size: 2rem;
+    font-size: 1.5rem;
     color:#fff;
     padding-top: 1.5rem;
 }
 
-.experiance .box-container .box p{
+.experiance .box-container .box ul{
     font-size: 1.4rem;
-    color:#eee;
-    padding: 1rem 0;
+    color:#fff;
+    /* padding: 1rem 0; */
+    padding: 20px;
+    background-color: #222;
+    margin-top: 10px;
+    border-radius: 1rem;
+
 }
 
+.experiance .box-container .box ul li{
+    padding: 10px;  
+}
+.experiance .box-container .box i{
+    position: absolute;
+    top:-1.5rem; left:-2.5rem;
+    height:5rem;
+    width: 5rem;
+    border-radius: 50%;
+    line-height: 5rem;
+    text-align: center;
+    font-size: 2rem;
+    color:#fff;
+    background:var(--yellow);
+}
+
+.experiance .box-container .box{
+    margin:4rem 1rem;
+    padding-left: 4rem;
+    border-left: .2rem solid #fff;
+    position: relative;
+}
+
+.experiance .box-container .box span{
+    font-size: 1.8rem;
+    background:#222;
+    color:#fff;
+    border-radius: 5rem;
+    padding:.5rem 2.5rem;
+}
+
+.experiance .box-container .box h3{
+    font-size: 1.5rem;
+    color:#fff;
+    padding-top: 1.5rem;
+}
+
+.experiance .box-container .box ul{
+    font-size: 1.4rem;
+    color:#fff;
+    /* padding: 1rem 0; */
+    padding: 20px;
+    background-color: #222;
+    margin-top: 10px;
+    border-radius: 1rem;
+
+}
+
+.experiance .box-container .box ul li{
+    padding: 10px;  
+}
 .experiance .box-container .box i{
     position: absolute;
     top:-1.5rem; left:-2.5rem;
