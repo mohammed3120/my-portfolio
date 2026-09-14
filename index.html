@@ -1,347 +1,470 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohammed Abduallah</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohammed Abduallah — AI &amp; Computer Vision Engineer</title>
+<meta name="description" content="Mohammed Abduallah is an AI Engineer specializing in Computer Vision, LLM systems, RAG architectures and full-stack backend engineering. Explore projects, experience and skills.">
+<meta name="keywords" content="AI Engineer, Computer Vision Engineer, LLM Engineer, Backend Developer, Full Stack Developer, Python, YOLOv8, RAG, LangChain">
+<meta name="author" content="Mohammed Abduallah">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mohammedabduallah.dev/">
 
-    <!-- font awesome cdn link -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mohammed Abduallah — AI & Computer Vision Engineer">
+<meta property="og:description" content="Building intelligent systems across Computer Vision, LLMs, RAG and scalable backend architectures.">
+<meta property="og:image" content="assets/og-cover.svg">
+<meta property="og:url" content="https://mohammedabduallah.dev/">
+<meta property="og:site_name" content="Mohammed Abduallah Portfolio">
 
-    <!-- custom css file link  -->
-    <link rel="stylesheet" href="css/style.css">
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PR78YCYXV4"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mohammed Abduallah — AI & Computer Vision Engineer">
+<meta name="twitter:description" content="AI Engineer specializing in Computer Vision, LLM systems and scalable backend architectures.">
+<meta name="twitter:image" content="assets/og-cover.svg">
 
-      gtag('config', 'G-PR78YCYXV4');
-    </script>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    
-<!-- header section starts  -->
 
-<header>
+<!-- ============ LOADING SCREEN ============ -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader__frame">
+    <span class="loader__corner tl"></span>
+    <span class="loader__corner tr"></span>
+    <span class="loader__corner bl"></span>
+    <span class="loader__corner br"></span>
+    <div class="loader__label">INITIALIZING<span class="loader__dots">...</span></div>
+    <div class="loader__bar"><div class="loader__bar-fill"></div></div>
+  </div>
+</div>
 
-    <div class="user">
-        <img src="images/pic.jpg" alt="">
-        <h3 class="name">Mohammed Abduallah</h3>
-        <p class="post">Software Engineer</p>
-    </div>
+<!-- ============ CUSTOM CURSOR ============ -->
+<div class="cursor" id="cursor" aria-hidden="true">
+  <span class="cursor__h"></span><span class="cursor__v"></span>
+  <span class="cursor__ring"></span>
+</div>
 
-    <nav class="navbar">
-        <ul>
-            <li><a href="#home">home</a></li>
-            <li><a href="#about">about</a></li>
-            <li><a href="#experiance">experiance</a></li>
-            <li><a href="#tools">tools For AI</a></li>
-            <li><a href="#toolsForWeb">tools For Web</a></li>
-            <li><a href="#skills">skills</a></li>
-            <li><a href="#contact">contact</a></li>
-        </ul>
+<!-- ============ PARTICLE / NETWORK BACKGROUND ============ -->
+<canvas id="network-canvas" aria-hidden="true"></canvas>
+
+<!-- ============ SCROLL PROGRESS ============ -->
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+<!-- ============ NAVIGATION ============ -->
+<header class="nav" id="nav">
+  <div class="nav__inner container">
+    <a href="#home" class="nav__logo" aria-label="Mohammed Abduallah — home">
+      <span class="nav__logo-bracket">[</span>MA<span class="nav__logo-bracket">]</span>
+    </a>
+    <nav class="nav__links" id="navLinks" aria-label="Primary">
+      <a href="#about"><span class="nav__idx">01</span>About</a>
+      <a href="#experience"><span class="nav__idx">02</span>Experience</a>
+      <a href="#skills"><span class="nav__idx">03</span>Skills</a>
+      <a href="#projects"><span class="nav__idx">04</span>Projects</a>
+      <a href="#stack"><span class="nav__idx">05</span>Stack</a>
+      <a href="#contact"><span class="nav__idx">06</span>Contact</a>
     </nav>
-
+    <div class="nav__actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme" title="Toggle theme (T)">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12.8A9 9 0 1 1 11.2 3 7.2 7.2 0 0 0 21 12.8z"/></svg>
+      </button>
+      <button class="nav__burger" id="navBurger" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
 </header>
 
-<!-- header section ends -->
+<main id="home">
 
-<div id="menu" class="fas fa-bars"></div>
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__grid" aria-hidden="true"></div>
+    <div class="container hero__inner">
+      <div class="hero__content reveal">
+        <p class="eyebrow"><span class="eyebrow__dot"></span>AI ENGINEER · COMPUTER VISION · LLM SYSTEMS</p>
+        <h1 class="hero__title">
+          Mohammed<br><span class="hero__title-accent">Abduallah</span>
+        </h1>
+        <p class="hero__role">
+          <span id="typedRole" class="typed-role"></span><span class="typed-cursor">|</span>
+        </p>
+        <p class="hero__summary">
+          I design and ship intelligent systems end to end — from real-time computer-vision
+          pipelines and LLM-powered RAG assistants to the backend architecture and full-stack
+          interfaces that put them in front of real users.
+        </p>
+        <div class="hero__cta">
+          <a href="assets/Mohammed_Abduallah_Resume.pdf" download class="btn btn--primary">
+            <span>Download resume</span>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/></svg>
+          </a>
+          <a href="#contact" class="btn btn--ghost">Contact me</a>
+          <a href="#projects" class="btn btn--ghost">View projects</a>
+        </div>
+        <div class="hero__meta">
+          <span class="hero__meta-item"><span class="dot dot--live"></span>Aleppo, Syria</span>
+          <span class="hero__meta-item">Open to remote roles</span>
+        </div>
+      </div>
 
-<!-- home section starts  -->
+      <div class="hero__visual reveal" aria-hidden="true">
+        <div class="viewfinder">
+          <span class="viewfinder__corner tl"></span>
+          <span class="viewfinder__corner tr"></span>
+          <span class="viewfinder__corner bl"></span>
+          <span class="viewfinder__corner br"></span>
+          <div class="viewfinder__photo"><img src="assets/profile.jpg" alt="Mohammed Abduallah"></div>
+          <div class="viewfinder__tag viewfinder__tag--1">person <b>0.98</b></div>
+          <div class="viewfinder__tag viewfinder__tag--2">engineer <b>0.94</b></div>
+          <div class="viewfinder__scanline"></div>
+        </div>
+      </div>
+    </div>
+    <a href="#about" class="scroll-indicator" aria-label="Scroll to About section">
+      <span class="scroll-indicator__frame"><span class="scroll-indicator__dot"></span></span>
+      <span class="scroll-indicator__label">SCROLL</span>
+    </a>
+  </section>
 
-<section class="home" id="home">
+  <!-- ============ ABOUT ============ -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="section-eyebrow">01 / About</p>
+        <h2 class="section-title">A systems thinker who ships full pipelines</h2>
+      </div>
 
-    <h3>HI THERE !</h3>
-    <h1>I'M <span>Mohammed Abduallah</span></h1>
-    <p>Experienced with more than 4 years in developing applications and websites using Python, Data Analysis and building Machine/Deep learning models.
-        Regularly learning new topics, motivated and open to new challenges.
-    </p>
-    <a href="#about"><button class="btn">about me <i class="fas fa-user"></i></button></a>
+      <div class="about__grid">
+        <div class="about__text reveal">
+          <p>
+            I'm an AI Engineer based in Aleppo, Syria, focused on building software that
+            understands and acts on the real world — whether that's a camera feed, a
+            document corpus, or a REST request. I move comfortably across the stack: designing
+            the database, building the API, training the model, and shipping the interface
+            that ties it together.
+          </p>
+          <p>
+            My background spans <strong>computer vision</strong> for embedded and edge devices,
+            <strong> LLM &amp; RAG</strong> systems for knowledge retrieval, and
+            <strong> backend engineering</strong> for services that need to stay fast, secure and
+            observable in production.
+          </p>
+          <ul class="about__tags">
+            <li>AI Engineer</li>
+            <li>Python Expert</li>
+            <li>Backend Developer</li>
+            <li>React Developer</li>
+            <li>Computer Vision Engineer</li>
+            <li>LLM Developer</li>
+          </ul>
+        </div>
 
-</section>
+        <div class="about__stats">
+          <div class="stat-card reveal">
+            <span class="stat-card__num" data-count="3" data-suffix="+">0</span>
+            <span class="stat-card__label">Years experience</span>
+          </div>
+          <div class="stat-card reveal">
+            <span class="stat-card__num" data-count="12" data-suffix="+">0</span>
+            <span class="stat-card__label">Projects shipped</span>
+          </div>
+          <div class="stat-card reveal">
+            <span class="stat-card__num" data-count="30" data-suffix="+">0</span>
+            <span class="stat-card__label">Technologies used</span>
+          </div>
+          <div class="stat-card reveal">
+            <span class="stat-card__num" data-count="2">0</span>
+            <span class="stat-card__label">Companies worked with</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- home section ends -->
+  <!-- ============ EXPERIENCE ============ -->
+  <section class="section section--alt" id="experience">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="section-eyebrow">02 / Experience</p>
+        <h2 class="section-title">Where the work happened</h2>
+      </div>
 
-<!-- about section starts  -->
+      <div class="timeline">
+        <div class="timeline__line" aria-hidden="true"></div>
 
-<section class="about" id="about">
-
-<h1 class="heading"> <span>about</span> me </h1>
-
-<div class="row">
-
-    <div class="info">
-        <h3> <span> name : </span> Mohammed Abduallah </h3>
-        <h3> <span> qualification : </span> Bachelor's Degree in Informatics Engineering </h3>
-        <h3> <span> post : </span> Software Engineer </h3>
-        <h3> <span> languages : </span> 
-      &nbsp;<ul>
-                <li class="language">Arabic : Native </li>
-                <li class="language">English : professional working proficiency</li>
+        <article class="timeline__item reveal">
+          <div class="timeline__marker"><span class="timeline__marker-dot"></span></div>
+          <div class="timeline__card">
+            <div class="timeline__card-head">
+              <h3>Backend Developer</h3>
+              <span class="timeline__date">May 2024 – Apr 2026</span>
+            </div>
+            <p class="timeline__org">Blue Elite Tech</p>
+            <ul class="timeline__list">
+              <li>Designed scalable RESTful APIs connecting client applications to server-side systems</li>
+              <li>Engineered and optimized PostgreSQL, MySQL, SQL Server and MongoDB data layers</li>
+              <li>Implemented core backend logic in Django, covering key business processes</li>
+              <li>Integrated OAuth and JWT to secure access to backend services</li>
+              <li>Improved scalability through load balancing, Redis caching and resource tuning</li>
+              <li>Contributed to a monolith-to-microservices migration using Docker and Kubernetes</li>
+              <li>Built CI/CD pipelines with Jenkins and GitLab CI for automated testing and delivery</li>
             </ul>
-        </h3>
-        
-    </div>
-
-    <div class="counter">
-
-        <div class="box">
-            <a href="cv/Mohammed_Abduallah_Resume.pdf"><button class="btn"> download CV <i class="fas fa-download"></i> </button></a>
-        </div>
-    </div>
-
-</div>
-
-</section>
-
-<!-- about section ends -->
-
-<!-- experiance section starts  -->
-
-<section class="experiance" id="experiance">
-
-<h1 class="heading"> my <span>Experience</span> </h1>
-
-<div class="box-container">
-
-    <div class="box">
-        <i class="fas fa-user-tie"></i>
-        <span>BACKEND DEVELOPER AT Blue Elite Tech Company | MAY 2024 – JAN 2026: </span>
-        <h3>As a Backend Developer at Blue Elite Tech Company, I played a critical role in developing and maintaining robust backend systems that supported high-performance applications. My responsibilities included:</h3>
-        <ul>
-            <li>API Development:  Designed and implemented scalable RESTful to support seamless communication between client applications and server-side systems.</li>
-            <li>Database Management:  Engineered and optimized relational (PostgreSQL, MySQL, SQLServer) and NoSQL (MongoDB) databases, ensuring data consistency and efficient query performance.</li>
-            <li>Backend Logic Implementation:  Developed core server-side logic using Python (Django) ensuring business processes were efficiently executed.</li>
-            <li>Security Measures:  Integrated authentication and authorization protocols, such as OAuth and JWT, to safeguard sensitive data and ensure secure access to backend services.</li>
-            <li>Performance Tuning:  Enhanced the performance and scalability of backend systems through load balancing, caching strategies, and efficient resource utilization.</li>
-            <li>Microservices Architecture: Contributed to transitioning from monolithic to microservices architecture, utilizing Docker and Kubernetes for containerization and orchestration.</li>
-            <li>Collaboration: Worked closely with cross-functional teams, including front-end developers, DevOps engineers, and product managers, to deliver cohesive and timely solutions.</li>
-            <li>Continuous Integration:  Established CI/CD pipelines using Jenkins and GitLab CI to automate testing and deployment, ensuring fast and reliable delivery of backend features.</li>
-            <li>Documentation:  Maintained detailed documentation for APIs, database schemas, and backend processes, and provided regular updates to stakeholders on project progress.</li>
-        </ul>
-    </div>
-
-    <div class="box">
-        <i class="fas fa-user-tie"></i>
-        <span>AI ENGINEER AT RAM GROUP | FEBRUARY 2023 – MARCH 2024: </span>
-        <h3>As a Computer Vision Engineer in RAM Company, I played a pivotal role in spearheading cutting-edge projects that integrated computer vision technology into embedded systems. My responsibilities included:</h3>
-        <ul>
-            <li>Algorithm Development: Developing and fine-tuning computer vision algorithms for real-time object detection, tracking, and recognition. This involved optimizing algorithms for resource-constrained embedded platforms.</li>
-            <li>Hardware Integration: Collaborating closely with the hardware team to ensure seamless integration of computer vision solutions into embedded systems, optimizing for performance and resource efficiency.</li>
-            <li>Machine Learning Models: Training, deploying, and maintaining machine learning models for object detection, classification, and segmentation, tailored for embedded systems.</li>
-            <li>Performance Optimization: Continuously improving the efficiency and speed of computer vision processes on embedded devices, resulting in reduced latency and enhanced system responsiveness.</li>
-            <li>Cross-functional Collaboration: Collaborating with cross-functional teams, including software developers, hardware engineers, and project managers, to deliver end-to-end solutions that met project goals and timelines.</li>
-            <li>Quality Assurance: Implementing rigorous testing procedures to ensure the reliability and accuracy of computer vision applications, addressing issues and making refinements as necessary.</li>
-            <li>Documentation and Reporting: Maintaining detailed documentation of algorithms, models, and integration processes, and providing regular progress reports to project stakeholders.</li>
-            
-        </ul>
-    </div>
-    
-    
-</div>
-
-</section>
-
-<!-- experince section ends -->
-
-<!-- tools section starts  -->
-
-<section class="tools" id="tools">
-
-    <h1 class="heading">The  <span>Tools for AI</span> </h1>
-    
-    <div class="row">
-        <div class="content">   
-            <h2 class="title">Embedded Systems </h2>     
-            <div class="info">
-                <h3> <i class="fa fa-tools" ></i> Jetson (Nano, TX2)</h3>
-                <h3> <i class="fa fa-tools" ></i> Raspberry PI (3 & 4)</h3>
-                <h3> <i class="fa fa-tools" ></i>Arduino </h3>
+            <div class="timeline__badges">
+              <span class="chip">Django</span><span class="chip">FastAPI</span><span class="chip">PostgreSQL</span>
+              <span class="chip">MongoDB</span><span class="chip">Docker</span><span class="chip">Kubernetes</span>
+              <span class="chip">Redis</span><span class="chip">Jenkins</span>
             </div>
-             <br>
-            <h2 class="title">Operating Systems </h2>     
-            <div class="info">
-                <h3> <i class="fa fa-desktop" ></i> Ubuntu</h3>
-                <h3> <i class="fa fa-desktop" ></i> Raspbian</h3>
-                <h3> <i class="fa fa-desktop" ></i>Windows </h3>
+          </div>
+        </article>
+
+        <article class="timeline__item reveal">
+          <div class="timeline__marker"><span class="timeline__marker-dot"></span></div>
+          <div class="timeline__card">
+            <div class="timeline__card-head">
+              <h3>Computer Vision Engineer</h3>
+              <span class="timeline__date">Feb 2023 – Mar 2024</span>
             </div>
-    
-        </div> 
-        
-        <div class="content">   
-            <h2 class="title">Frameworkes</h2>       
-            <div class="info">            
-                <h3> <i class="fa fa-layer-group"></i> TensorFlow</h3>
-                <h3> <i class="fa fa-layer-group"></i> Keras</h3>
-                <h3> <i class="fa fa-layer-group"></i> PyTorch</h3>
-            </div>    
-        </div>
-
-        
-    
-    </div>
-    
-    </section>
-    
-<!-- tools section ends -->
-
-<!-- tools for web section starts  -->
-
-<section class="tools" id="toolsForWeb">
-
-    <h1 class="heading">The  <span>Tools for web</span> </h1>
-    
-    <div class="row">
-    
-        <div class="content">   
-            <h2 class="title">Front end</h2>     
-            <div class="info">
-                <h3> <i class="fa fa-book" ></i> html</h3>
-                <h3> <i class="fa fa-book" ></i> css</h3>
-                <h3> <i class="fa fa-book" ></i> java script</h3>
-                <h3> <i class="fa fa-book" ></i> Jquery</h3>
-                <h3> <i class="fa fa-book" ></i> bootstrap</h3>
-                <h3> <i class="fa fa-book" ></i> React</h3>
+            <p class="timeline__org">RAM Group</p>
+            <ul class="timeline__list">
+              <li>Developed and fine-tuned real-time object detection and tracking algorithms</li>
+              <li>Optimized vision models for resource-constrained embedded platforms</li>
+              <li>Trained, deployed and maintained ML models for detection, classification and segmentation</li>
+              <li>Collaborated with hardware teams to integrate CV pipelines into embedded systems</li>
+              <li>Reduced latency and improved throughput across edge-device inference</li>
+              <li>Ran rigorous QA on detection accuracy and documented models and pipelines</li>
+            </ul>
+            <div class="timeline__badges">
+              <span class="chip">YOLOv8</span><span class="chip">OpenCV</span><span class="chip">DeepSORT</span>
+              <span class="chip">TensorRT</span><span class="chip">ONNX</span><span class="chip">Jetson Nano</span>
+              <span class="chip">RTSP</span>
             </div>
-            
-    
-        </div>
-        
-        <div class="content">   
-            <h2 class="title">Back end</h2>       
-            <div class="info">            
-                <h3> <i class="fa fa-layer-group"></i> Django Web Framework</h3>
-                <h3> <i class="fa fa-layer-group"></i> Django Rest Framework</h3>
-                <h3> <i class="fa fa-layer-group"></i> Fast API</h3>
-                <h3> <i class="fa fa-layer-group"></i> Redis</h3>
-                <h3> <i class="fa fa-layer-group"></i> Web Socket</h3>
-                <h3> <i class="fa fa-layer-group"></i> Celery</h3>
-            </div>
-            
-    
-        </div>  
-        
-        <div class="content">   
-            <h2 class="title">DBMS</h2>       
-            <div class="info">            
-                <h3> <i class="fas fa-database"></i> MySQL</h3>
-                <h3> <i class="fas fa-database"></i> PostgreSQL</h3>
-                <h3> <i class="fas fa-database"></i> Microsoft SQL Server</h3>
-                <h3> <i class="fas fa-database"></i> Mongodb</h3>
-                <h3> <i class="fas fa-database"></i> Oracle Database</h3>
-                <h3> <i class="fas fa-database"></i> Maria DB</h3>
-                <h3> <i class="fas fa-database"></i> SQLLite</h3>
-            </div>
-            
-    
-        </div>
+          </div>
+        </article>
+      </div>
     </div>
-    
-    </section>
-    
-<!-- tools for web section ends -->
+  </section>
 
-<!-- skills section starts  -->
+  <!-- ============ SKILLS ============ -->
+  <section class="section" id="skills">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="section-eyebrow">03 / Skills</p>
+        <h2 class="section-title">Detected competencies</h2>
+      </div>
 
-<section class="skills" id="skills">
-
-<h1 class="heading"> my <span>Skills</span> </h1>
-
-<div class="row">
-
-    <div class="content">   
-        <h2 class="title">Programming Skills</h2>     
-        <div class="info">
-            <h3> <i class="fa fa-cogs" ></i> Problem Solving</h3>
-            <h3> <i class="fa fa-cogs" ></i> Data Analysis</h3>
-            <h3> <i class="fa fa-cogs" ></i> Image processing</h3>
-            <h3> <i class="fa fa-cogs" ></i> Git & Github</h3>
-            <h3> <i class="fa fa-cogs" ></i> System Analysis</h3>
-            <h3> <i class="fa fa-cogs" ></i> CI/CD</h3>
-            <h3> <i class="fa fa-cogs" ></i> Docker</h3>
-        </div>
-        
-
+      <div class="skills-grid" id="skillsGrid">
+        <!-- populated identically in markup for no-js resilience; JS only adds animation -->
+      </div>
     </div>
-    
-    <div class="content">   
-        <h2 class="title">Soft Skills</h2>       
-        <div class="info">            
-            <h3> <i class="fa fa-cogs" ></i> Have great skills in Teaching</h3>
-            <h3> <i class="fa fa-cogs" ></i> Strong communication and interpersonal skills</h3>
-            <h3> <i class="fa fa-cogs" ></i> Commitment to equality and social inclusion</h3>
-            <h3> <i class="fa fa-cogs" ></i> Reporting</h3>
-        </div>
-        
+  </section>
 
+  <!-- ============ PROJECTS ============ -->
+  <section class="section section--alt" id="projects">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="section-eyebrow">04 / Projects</p>
+        <h2 class="section-title">Selected work</h2>
+      </div>
+
+      <div class="filters reveal" id="projectFilters" role="tablist" aria-label="Filter projects by category">
+        <button class="filter-btn is-active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="cv">Computer Vision</button>
+        <button class="filter-btn" data-filter="backend">Backend</button>
+        <button class="filter-btn" data-filter="ai">AI</button>
+        <button class="filter-btn" data-filter="llm">LLM</button>
+        <button class="filter-btn" data-filter="fullstack">Full Stack</button>
+      </div>
+
+      <div class="projects-grid" id="projectsGrid"><!-- injected by JS --></div>
     </div>
+  </section>
 
-</div>
+  <!-- ============ TECH STACK ============ -->
+  <section class="section" id="stack">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="section-eyebrow">05 / Stack</p>
+        <h2 class="section-title">Tools of the trade</h2>
+      </div>
+      <div class="tech-wall" id="techWall"><!-- injected by JS --></div>
+    </div>
+  </section>
 
-</section>
+  <!-- ============ ACHIEVEMENTS ============ -->
+  <section class="section section--alt achievements">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="section-eyebrow">06 / Achievements</p>
+        <h2 class="section-title">Impact by the numbers</h2>
+      </div>
+      <div class="achv-grid">
+        <div class="achv-card reveal">
+          <span class="achv-card__num" data-count="12" data-suffix="+">0</span>
+          <span class="achv-card__label">Projects completed</span>
+        </div>
+        <div class="achv-card reveal">
+          <span class="achv-card__num" data-count="20" data-suffix="+">0</span>
+          <span class="achv-card__label">Backend APIs shipped</span>
+        </div>
+        <div class="achv-card reveal">
+          <span class="achv-card__num" data-count="10" data-suffix="+">0</span>
+          <span class="achv-card__label">AI models trained</span>
+        </div>
+        <div class="achv-card reveal">
+          <span class="achv-card__num" data-count="6" data-suffix="+">0</span>
+          <span class="achv-card__label">Computer vision systems</span>
+        </div>
+        <div class="achv-card reveal">
+          <span class="achv-card__num" data-count="4" data-suffix="+">0</span>
+          <span class="achv-card__label">LLM applications</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- skills section ends -->
+  <!-- ============ CERTIFICATES ============ -->
+  <section class="section" id="certificates">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="section-eyebrow">07 / Certificates</p>
+        <h2 class="section-title">Credentials</h2>
+      </div>
+      <div class="cert-grid">
+        <div class="cert-card reveal is-empty">
+          <span class="cert-card__icon">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="5"/><path d="M8.5 13.5L7 22l5-3 5 3-1.5-8.5"/></svg>
+          </span>
+          <h3>Add a credential</h3>
+          <p>Showcase a certification, badge or course completion here.</p>
+        </div>
+        <div class="cert-card reveal is-empty">
+          <span class="cert-card__icon">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="5"/><path d="M8.5 13.5L7 22l5-3 5 3-1.5-8.5"/></svg>
+          </span>
+          <h3>Add a credential</h3>
+          <p>Link a verification URL so visitors can confirm it instantly.</p>
+        </div>
+        <div class="cert-card reveal is-empty">
+          <span class="cert-card__icon">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="5"/><path d="M8.5 13.5L7 22l5-3 5 3-1.5-8.5"/></svg>
+          </span>
+          <h3>Add a credential</h3>
+          <p>Group by issuer, date, or skill area as your list grows.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- contact section starts  -->
+  <!-- ============ CONTACT ============ -->
+  <section class="section section--alt" id="contact">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="section-eyebrow">08 / Contact</p>
+        <h2 class="section-title">Let's build something intelligent</h2>
+      </div>
 
-<section class="contact" id="contact">
-
-<h1 class="heading"> <span>contact</span> me </h1>
-
-<div class="row">
-
-    <div class="content">
-        
-        <div class="info">
-            <h3> <i class="fas fa-envelope" title="Email"></i>  mohammedabduallah95@gmail.com </h3>
-            <h3> <i class="fas fa-phone" title="Phone ond Whatsapp"></i> & &nbsp;<i class="fab fa-whatsapp" title="Phone ond Whatsapp"></i>+963 938152902 </h3>
-            <h3> <a href="https://www.linkedin.com/in/mohammed3120/"  target="_blank"><i class="fab fa-linkedin-in" title="Linkedin"></i> mohammed3120</a> </h3>
-            <h3> <a href="https://github.com/mohammed3120" target="_blank"><i class="fab fa-github" title="Github"></i> mohammed3120</a> </h3>
-            <h3> <a href="https://stackoverflow.com/users/10633298/mohammed-abduallah" target="_blank"><i class="fab fa-stack-overflow" title="Stack Overflow"></i> 10633298/mohammed-abduallah </a></h3>
-            <h3> <a href="https://www.kaggle.com/mohammedkha" target="_blank"><i class="fab fa-kaggle" title="Kaggle"></i> mohammedkha </a></h3>
-            <h3 id="address"> <i class="fas fa-map-marker-alt" title="Address"></i> Syria, Damascus</h3>
+      <div class="contact__grid">
+        <div class="contact__info reveal">
+          <p class="contact__lead">
+            Have a role, a project, or a question about a build? I usually reply within a day.
+          </p>
+          <ul class="contact__list">
+            <li>
+              <span class="contact__list-icon">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+              </span>
+              <a href="mailto:mohammedabduallah95@gmail.com">mohammedabduallah95@gmail.com</a>
+            </li>
+            <li>
+              <span class="contact__list-icon">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.5 17.4c-.3 1.6-2.5 3-4 3-3.8 0-9-3.4-11.4-8.6C3.7 8.1 4 6 6 4.6c.6-.4 1.3-.3 1.7.3l1.6 2.3c.3.5.2 1.1-.2 1.5l-1 1c.9 2 2.6 3.7 4.6 4.6l1-1c.4-.4 1-.5 1.5-.2l2.3 1.6c.6.4.7 1.1.3 1.7-.1.1-.2.3-.3.4z"/></svg>
+              </span>
+              <a href="https://wa.me/963938152902" target="_blank" rel="noopener">+963 938 152 902</a>
+            </li>
+            <li>
+              <span class="contact__list-icon">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2C6.5 2 2 6.5 2 12a10 10 0 0 0 6.8 9.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.1-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-4.9 0-1.1.4-2 1-2.6-.1-.3-.5-1.4.1-2.8 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 4.9 0c1.9-1.3 2.7-1 2.7-1 .6 1.4.2 2.5.1 2.8.6.6 1 1.5 1 2.6 0 3.8-2.4 4.6-4.6 4.9.4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10 10 0 0 0 22 12c0-5.5-4.5-10-10-10z"/></svg>
+              </span>
+              <a href="https://github.com/mohammed3120" target="_blank" rel="noopener">github.com/mohammed3120</a>
+            </li>
+            <li>
+              <span class="contact__list-icon">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 17v-6M7 8.5v.01M12 17v-4a2 2 0 0 1 4 0v4M12 13v0"/></svg>
+              </span>
+              <a href="https://www.linkedin.com/in/mohammed3120" target="_blank" rel="noopener">linkedin.com/in/mohammed3120</a>
+            </li>
+          </ul>
+          <div class="contact__social">
+            <a href="https://github.com/mohammed3120" target="_blank" rel="noopener" aria-label="GitHub" class="social-btn">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2C6.5 2 2 6.5 2 12a10 10 0 0 0 6.8 9.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.1-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-4.9 0-1.1.4-2 1-2.6-.1-.3-.5-1.4.1-2.8 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 4.9 0c1.9-1.3 2.7-1 2.7-1 .6 1.4.2 2.5.1 2.8.6.6 1 1.5 1 2.6 0 3.8-2.4 4.6-4.6 4.9.4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10 10 0 0 0 22 12c0-5.5-4.5-10-10-10z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/mohammed3120" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-btn">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 17v-6M7 8.5v.01M12 17v-4a2 2 0 0 1 4 0v4M12 13v0"/></svg>
+            </a>
+            <a href="mailto:mohammedabduallah95@gmail.com" aria-label="Email" class="social-btn">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+            </a>
+            <a href="https://wa.me/963938152902" target="_blank" rel="noopener" aria-label="WhatsApp" class="social-btn">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.5 17.4c-.3 1.6-2.5 3-4 3-3.8 0-9-3.4-11.4-8.6C3.7 8.1 4 6 6 4.6c.6-.4 1.3-.3 1.7.3l1.6 2.3c.3.5.2 1.1-.2 1.5l-1 1c.9 2 2.6 3.7 4.6 4.6l1-1c.4-.4 1-.5 1.5-.2l2.3 1.6c.6.4.7 1.1.3 1.7-.1.1-.2.3-.3.4z"/></svg>
+            </a>
+          </div>
         </div>
 
+        <form class="contact__form reveal" id="contactForm" novalidate>
+          <div class="field">
+            <input type="text" id="cf-name" name="name" required placeholder=" ">
+            <label for="cf-name">Name</label>
+            <span class="field__line"></span>
+          </div>
+          <div class="field">
+            <input type="email" id="cf-email" name="email" required placeholder=" ">
+            <label for="cf-email">Email</label>
+            <span class="field__line"></span>
+          </div>
+          <div class="field">
+            <input type="text" id="cf-subject" name="subject" required placeholder=" ">
+            <label for="cf-subject">Subject</label>
+            <span class="field__line"></span>
+          </div>
+          <div class="field">
+            <textarea id="cf-message" name="message" rows="4" required placeholder=" "></textarea>
+            <label for="cf-message">Message</label>
+            <span class="field__line"></span>
+          </div>
+          <button type="submit" class="btn btn--primary btn--block">
+            <span id="submitLabel">Send message</span>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+          </button>
+          <p class="contact__note" id="formNote" role="status" aria-live="polite"></p>
+        </form>
+      </div>
     </div>
+  </section>
 
-</div>
+</main>
 
-</section>
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container footer__inner">
+    <a href="#home" class="nav__logo">
+      <span class="nav__logo-bracket">[</span>MA<span class="nav__logo-bracket">]</span>
+    </a>
+    <p class="footer__tag">AI Engineer · Computer Vision · LLM Systems · Full Stack</p>
+    <p class="footer__copy">© <span id="year"></span> Mohammed Abduallah. Built with HTML, CSS &amp; JavaScript — no frameworks.</p>
+  </div>
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
+</footer>
 
-<!-- contact section ends -->
-
-
-<!-- scroll top button  -->
-
-<a href="#home" class="top">
-    <img src="images/scroll-top-img.png" alt="">
-</a>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- jquery cdn link  -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-<!-- custom js file link  -->
-<script src="js/script.js"></script>
-
-
+<script src="js/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#0B1020"/>
+  <path d="M10 10h10M10 10v10M54 10H44M54 10v10M10 54h10M10 54V44M54 54H44M54 54V44" stroke="#00D4FF" stroke-width="3" stroke-linecap="round"/>
+  <text x="32" y="40" font-family="JetBrains Mono, monospace" font-size="20" font-weight="700" fill="#4F8CFF" text-anchor="middle">MA</text>
+</svg>
