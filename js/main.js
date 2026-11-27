@@ -178,25 +178,34 @@
   (function typedRole() {
     var el = document.getElementById('typedRole');
     if (!el) return;
-    var roles = ['AI Engineer', 'Backend Developer', 'Full Stack Developer', 'Computer Vision Engineer', 'LLM Engineer'];
+    var EN_ROLES = ['AI Engineer', 'Backend Developer', 'Full Stack Developer', 'Computer Vision Engineer', 'LLM Engineer'];
     var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduced) { el.textContent = roles[0]; return; }
+    var token = 0;
 
-    var ri = 0, ci = 0, deleting = false;
-    function step() {
-      var word = roles[ri];
-      if (!deleting) {
-        ci++;
-        el.textContent = word.slice(0, ci);
-        if (ci === word.length) { deleting = true; setTimeout(step, 1400); return; }
-      } else {
-        ci--;
-        el.textContent = word.slice(0, ci);
-        if (ci === 0) { deleting = false; ri = (ri + 1) % roles.length; }
+    function start() {
+      var my = ++token;
+      var roles = I18N.roles(EN_ROLES);
+      if (reduced) { el.textContent = roles[0]; return; }
+      var ri = 0, ci = 0, deleting = false;
+      el.textContent = '';
+      function step() {
+        if (my !== token) return;
+        var word = roles[ri];
+        if (!deleting) {
+          ci++;
+          el.textContent = word.slice(0, ci);
+          if (ci === word.length) { deleting = true; setTimeout(step, 1400); return; }
+        } else {
+          ci--;
+          el.textContent = word.slice(0, ci);
+          if (ci === 0) { deleting = false; ri = (ri + 1) % roles.length; }
+        }
+        setTimeout(step, deleting ? 45 : 75);
       }
-      setTimeout(step, deleting ? 45 : 75);
+      step();
     }
-    step();
+    start();
+    document.addEventListener('langchange', start);
   })();
 
   /* ---------------- Scroll reveal ---------------- */
@@ -271,10 +280,10 @@
     { title: 'Software engineering', icon: 'blueprint', tags: ['System Design', 'API Design', 'Database Design', 'Performance Optimization', 'Agile', 'Documentation'] }
   ];
 
-  (function renderSkills() {
+  function renderSkills() {
     var grid = document.getElementById('skillsGrid');
     if (!grid) return;
-    var html = SKILLS.map(function (s) {
+    var html = SKILLS.map(function (s, si) {
       var tags = s.tags.map(function (t) {
         return '<span class="skill-tag"><span class="skill-tag__dot" aria-hidden="true"></span>' + t + '</span>';
       }).join('');
@@ -282,7 +291,7 @@
         '<div class="skill-card reveal">' +
           '<div class="skill-card__head">' +
             '<span class="skill-card__icon" aria-hidden="true">' + (ICONS[s.icon] || '') + '</span>' +
-            '<h3 class="skill-card__title">' + s.title + '</h3>' +
+            '<h3 class="skill-card__title">' + I18N.pick('skillTitles', si, s.title) + '</h3>' +
           '</div>' +
           '<div class="skill-card__tags">' + tags + '</div>' +
         '</div>'
@@ -299,7 +308,9 @@
     } else {
       grid.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('is-visible'); });
     }
-  })();
+  }
+  renderSkills();
+  document.addEventListener('langchange', renderSkills);
 
   /* ---------------- Projects data + render + filter ---------------- */
   var PROJECTS = [
@@ -377,20 +388,26 @@
     }
   ];
 
+  var currentFilter = 'all';
   function renderProjects(filter) {
+    currentFilter = filter;
     var grid = document.getElementById('projectsGrid');
     if (!grid) return;
-    grid.innerHTML = PROJECTS.map(function (p) {
+    grid.innerHTML = PROJECTS.map(function (p, pi) {
+      var tr = I18N.pick('projects', pi, null);
+      var ptitle = tr ? tr[0] : p.title;
+      var pdesc = tr ? tr[1] : p.desc;
+      var catLabel = I18N.pick('cats', p.cat, p.catLabel);
       var hidden = (filter !== 'all' && p.cat !== filter) ? ' is-hidden' : '';
       var tech = p.tech.map(function (t) { return '<span class="chip">' + t + '</span>'; }).join('');
       return (
         '<article class="project-card reveal is-visible' + hidden + '" data-cat="' + p.cat + '">' +
           '<span class="project-card__frame" aria-hidden="true"><span class="tl"></span><span class="tr"></span><span class="bl"></span><span class="br"></span></span>' +
-          '<div class="project-card__media" style="background:' + p.gradient + '"><span>' + p.title.toUpperCase() + '</span></div>' +
+          '<div class="project-card__media" style="background:' + p.gradient + '"><span>' + ptitle.toUpperCase() + '</span></div>' +
           '<div class="project-card__body">' +
-            '<span class="project-card__cat">' + p.catLabel + '</span>' +
-            '<h3 class="project-card__title">' + p.title + '</h3>' +
-            '<p class="project-card__desc">' + p.desc + '</p>' +
+            '<span class="project-card__cat">' + catLabel + '</span>' +
+            '<h3 class="project-card__title">' + ptitle + '</h3>' +
+            '<p class="project-card__desc">' + pdesc + '</p>' +
             '<div class="project-card__tech">' + tech + '</div>' +
             '<div class="project-card__links">' +
               '<a href="' + (p.url || 'https://github.com/mohammed3120') + '" target="_blank" rel="noopener">GitHub</a>' +
@@ -411,6 +428,7 @@
     });
   });
   renderProjects('all');
+  document.addEventListener('langchange', function () { renderProjects(currentFilter); });
 
   /* ---------------- 3D tilt on project cards ---------------- */
   function attachTilt() {
@@ -461,14 +479,16 @@
       var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
       if (!name || !emailOk || !message) {
-        note.textContent = 'Please fill in your name, a valid email and a message.';
+        note.textContent = I18N.lang === 'ar' ? I18N.t('form.err') : 'Please fill in your name, a valid email and a message.';
         note.style.color = 'var(--secondary)';
         return;
       }
-      note.textContent = 'Thanks, ' + name.split(' ')[0] + ' — your message is ready. Opening your email client…';
+      note.textContent = I18N.lang === 'ar'
+        ? I18N.t('form.ok', { name: name.split(' ')[0] })
+        : 'Thanks, ' + name.split(' ')[0] + ' — your message is ready. Opening your email client…';
       note.style.color = 'var(--success)';
 
-      var subject = encodeURIComponent(document.getElementById('cf-subject').value.trim() || 'Portfolio contact');
+      var subject = encodeURIComponent(document.getElementById('cf-subject').value.trim() || (I18N.lang === 'ar' ? I18N.t('form.subj') : 'Portfolio contact'));
       var body = encodeURIComponent(message + '\n\n— ' + name + ' (' + email + ')');
       setTimeout(function () {
         window.location.href = 'mailto:mohammedabduallah95@gmail.com?subject=' + subject + '&body=' + body;
